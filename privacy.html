@@ -15,15 +15,17 @@
 </div></header>
 <main><div class="wrap">
 <h1>Privacy Policy</h1>
-<p class="meta">Effective date: 23 October 2026 · Applies to the NutriBuddy app on iOS and Android</p>
+<p class="meta">Effective date: 24 October 2026 · Applies to the NutriBuddy app on iOS and Android</p>
 
 <div class="card summary">
   <p><strong>The short version</strong></p>
   <ul>
-    <li>NutriBuddy has <strong>no user accounts and no servers of its own</strong>. Your profile, meals, weights, water, steps and chats are stored <strong>only on your device</strong>.</li>
-    <li>When you use an AI feature (photo scan, describing a meal, barcode lookup fallback, the Nutri coach), the content you submit is sent to <strong>Google's Gemini API</strong> to produce the answer. We ask for your permission before the first time this happens.</li>
+    <li>NutriBuddy works fully <strong>without an account</strong>. Your profile, meals, weights, water, steps and chats are stored <strong>on your device</strong>.</li>
+    <li>If you <strong>choose</strong> to sign in with Apple or Google, a backup of your data is stored in <strong>Google Firebase (Cloud Firestore, Europe)</strong> so you can restore it on another phone. Only you can access your backup.</li>
+    <li>When you use an AI feature (photo scan, describing a meal, the Nutri coach), the content you submit is sent to <strong>Google Gemini via Firebase AI Logic</strong> to produce the answer. We ask for your permission before the first time this happens.</li>
+    <li>Payments are processed by Apple or Google; your subscription status is managed with <strong>RevenueCat</strong>. We never see your payment details.</li>
     <li>We do <strong>not</strong> sell your data, show ads, use analytics or tracking SDKs, or track you across apps and websites.</li>
-    <li>You can delete everything at any time in <em>Profile → Delete all data</em>, or by uninstalling the app.</li>
+    <li>Erase the data on your phone with <em>Profile → Erase all data</em>; delete your account and cloud backup with <em>Profile → Account → Delete account</em>.</li>
   </ul>
 </div>
 
@@ -32,44 +34,55 @@
 <p>Contact for any privacy question or request: <a href="mailto:ergun.app.dev@gmail.com">ergun.app.dev@gmail.com</a>.</p>
 
 <h2>2. Data stored on your device</h2>
-<p>The following information is created by you and stored locally in the app's private storage on your phone. It is <strong>not uploaded to any server operated by us</strong> — we do not operate any.</p>
+<p>The following information is created by you and stored locally in the app's private storage on your phone. We do not run servers of our own. If you do not sign in, this data stays on your phone, except for what is sent when you use the features described in section 3. If you sign in, a copy of most of it is backed up as described in section 3.1.</p>
 <table class="table">
   <tr><th>Category</th><th>Examples</th></tr>
   <tr><td>Profile and goals</td><td>Sex, age, height, current and target weight, activity level, goal and pace, diet style, food restrictions and preferences, motivations and other answers you give during onboarding, calorie/macro/water/step targets</td></tr>
-  <tr><td>Logs</td><td>Meals and their estimated calories and macronutrients, water intake, weight entries, favourite foods</td></tr>
+  <tr><td>Logs</td><td>Meals and their estimated calories and macronutrients, water intake, steps and active energy, weight entries, favourite foods, your meal plan</td></tr>
   <tr><td>Coach</td><td>Your conversation with the Nutri coach and any photos you attach to it</td></tr>
   <tr><td>Settings</td><td>Language, appearance, reminder times, notification and health-sync preferences</td></tr>
 </table>
 <p>Device backups: if you have enabled iCloud Backup (iOS) or Google device backup (Android), your operating system may include the app's local data in your personal device backup. Those backups are controlled by you and by Apple or Google, not by us.</p>
 
 <h2>3. Data that leaves your device</h2>
-<h3>3.1 AI features — Google Gemini API</h3>
-<p>NutriBuddy uses the Gemini API, provided by Google LLC, to analyse food and to power the Nutri coach. Data is sent <strong>only when you actively use one of these features</strong>, and only after you have given permission in the app:</p>
+<h3>3.1 Optional account and cloud backup — Google Firebase</h3>
+<p>You can sign in with Apple (iOS) or Google (Android) to back up your data and restore it on another phone. Signing in is <strong>optional</strong>; every feature works without it. Sign-in is provided by Google Firebase Authentication (Google LLC). From Apple or Google we receive a user identifier, your email address (Apple users can hide it with "Hide My Email") and, if you choose to share it, your name.</p>
+<p>While you are signed in, the app uploads a backup when it goes to the background. The backup is stored in Google Cloud Firestore (Firebase), with the database located in Europe (multi-region "eur3").</p>
+<table class="table">
+  <tr><th>Backed up</th><th>Not backed up</th></tr>
+  <tr><td>Profile, goals and onboarding answers; settings (such as language, appearance and plan card); meal logs with calories and macros; water, steps, active energy and weight entries; favourite foods; your meal plan</td><td>Your Nutri coach conversation and its photos; your AI consent choice; notification and health permissions; your subscription status</td></tr>
+</table>
+<p>Security rules allow each user to read and write only their own data, and data is encrypted in transit (TLS). Signing out keeps your backup so you can restore it later. <em>Profile → Account → Delete account</em> permanently deletes your account and your cloud backup; the data on your phone stays until you erase it with <em>Profile → Erase all data</em>. See the <a href="https://firebase.google.com/support/privacy" rel="noopener">Firebase privacy and security information</a> and the <a href="https://policies.google.com/privacy" rel="noopener">Google Privacy Policy</a>.</p>
+
+<h3>3.2 AI features — Google Gemini via Firebase AI Logic</h3>
+<p>NutriBuddy uses Google Gemini, provided by Google LLC, to analyse food and to power the Nutri coach. Requests are sent through Google Firebase AI Logic to the Gemini Developer API; the Gemini API key is not stored in the app. Data is sent <strong>only when you actively use one of these features</strong>, and only after you have given permission in the app:</p>
 <table class="table">
   <tr><th>Feature</th><th>What is sent</th></tr>
   <tr><td>Photo scan</td><td>The meal photo you take or choose, and the app language</td></tr>
   <tr><td>Describe a meal (text or voice)</td><td>The text you typed or the transcript of what you said</td></tr>
-  <tr><td>Barcode scan</td><td>The barcode number, and only if the product is not found in Open Food Facts (see 3.2)</td></tr>
   <tr><td>Nutri coach</td><td>Your message and any photo you attach; a short summary of your profile and goals (for example age, sex, height, weight, target weight, diet style, food restrictions and the onboarding answers listed in section 2); a summary of today's log (calories and macros eaten, meal names and times, water and step count); and your most recent messages in the conversation so the coach can follow it</td></tr>
 </table>
-<p>We do not send your name, email address, contact details, precise location or any device identifier to Google — the app does not collect them.</p>
-<p>Google processes this data to return the response. Under the Gemini API terms that apply to paid use, Google does not use prompts or responses to improve its products, and may retain them for a limited period to detect abuse and comply with law. See the <a href="https://ai.google.dev/gemini-api/terms" rel="noopener">Gemini API Additional Terms of Service</a> and the <a href="https://policies.google.com/privacy" rel="noopener">Google Privacy Policy</a>. Google may process data in the United States and other countries.</p>
+<p>AI requests do not include your name, email address, contact details or precise location.</p>
+<p>Google processes this data to return the response. We use the Gemini API on a paid plan; under the terms that apply to paid use, Google does not use prompts or responses to improve its products, and may retain them for a limited period to detect abuse and comply with law. See the <a href="https://ai.google.dev/gemini-api/terms" rel="noopener">Gemini API Additional Terms of Service</a> and the <a href="https://policies.google.com/privacy" rel="noopener">Google Privacy Policy</a>. Google may process data in the United States and other countries.</p>
 <p>AI results are estimates. Please read the <a href="disclaimer.html">Health Disclaimer</a>.</p>
 
-<h3>3.2 Barcode lookup — Open Food Facts</h3>
+<h3>3.3 App protection — Firebase App Check</h3>
+<p>To protect the AI service from abuse, the app uses Firebase App Check (Google LLC). It relies on Apple App Attest/DeviceCheck (iOS) or Google Play Integrity (Android) to confirm that requests come from the genuine NutriBuddy app. These services exchange a device-integrity token, not personal data about you.</p>
+
+<h3>3.4 Barcode lookup — Open Food Facts</h3>
 <p>When you scan a packaged product, the barcode number is sent to the public <a href="https://world.openfoodfacts.org" rel="noopener">Open Food Facts</a> database to retrieve its nutrition information. No other data is sent. See the <a href="https://world.openfoodfacts.org/privacy" rel="noopener">Open Food Facts privacy policy</a>.</p>
 
-<h3>3.3 Voice input — your phone's speech recognition</h3>
+<h3>3.5 Voice input — your phone's speech recognition</h3>
 <p>If you use the microphone, your speech is converted to text by the speech-recognition service built into your phone (Apple Speech on iOS, Google speech services on Android). Depending on your device and settings, audio may be processed by Apple or Google under their own privacy policies. NutriBuddy does not record or store audio; it only receives the text.</p>
 
-<h3>3.4 Apple Health and Health Connect</h3>
+<h3>3.6 Apple Health and Health Connect</h3>
 <p>If you choose to connect, NutriBuddy <strong>reads</strong> your step count, active energy burned and body weight from Apple Health (iOS) or Health Connect (Android) to keep your daily targets accurate. NutriBuddy does not write data to these services. You can revoke access at any time in the Health app or Health Connect settings.</p>
-<p>Data obtained from Apple Health or Health Connect is never used for advertising or marketing, never sold, and never used to build user profiles for third parties. Your step count for the current day may be included in the summary sent to the Nutri coach (section 3.1) when you use it.</p>
+<p>Data obtained from Apple Health or Health Connect is never used for advertising or marketing, never sold, and never used to build user profiles for third parties. Your step count for the current day may be included in the summary sent to the Nutri coach (section 3.2) when you use it. If you are signed in, the steps, active energy and weight stored in the app are included in your cloud backup (section 3.1).</p>
 
-<h3>3.5 Purchases — App Store and Google Play</h3>
-<p>Subscriptions are processed entirely by Apple or Google. We never see or store your payment details. Apple or Google tells the app only whether you have an active subscription.</p>
+<h3>3.7 Purchases — App Store, Google Play and RevenueCat</h3>
+<p>Subscriptions are processed entirely by Apple or Google. We never see or store your payment details. We manage subscription status with RevenueCat, Inc. (USA), which receives the store receipt and transaction information, the product you bought and an app user ID. The app user ID is a random ID, or your account identifier if you are signed in, so your subscription follows you to a new phone. See the <a href="https://www.revenuecat.com/privacy" rel="noopener">RevenueCat privacy policy</a>.</p>
 
-<h3>3.6 Notifications</h3>
+<h3>3.8 Notifications</h3>
 <p>Meal, water and trial reminders are scheduled locally on your device. No notification server is involved.</p>
 
 <h2>4. What we do not do</h2>
@@ -85,30 +98,35 @@
 <table class="table">
   <tr><th>Purpose</th><th>Legal basis (GDPR / KVKK)</th></tr>
   <tr><td>Providing the app's core features on your device</td><td>Performance of the contract with you (GDPR Art. 6(1)(b); KVKK Art. 5(2)(c))</td></tr>
+  <tr><td>Optional account and cloud backup, including health-related information such as weight, diet and food intake</td><td>Performance of the contract with you when you choose to sign in, and your explicit consent for the health-related information (GDPR Art. 6(1)(a), 6(1)(b) and 9(2)(a); KVKK Art. 5(2)(c), 6 and 9). You can withdraw by deleting your account at any time.</td></tr>
   <tr><td>Sending content to Gemini for AI features, including health-related information such as weight, diet and food intake, and the related transfer abroad</td><td>Your explicit consent, given in the app before first use (GDPR Art. 6(1)(a) and 9(2)(a); KVKK Art. 6 and 9). You can withdraw it at any time by not using AI features and deleting your data; withdrawal does not affect earlier processing.</td></tr>
+  <tr><td>Protecting the AI service from abuse with Firebase App Check</td><td>Our legitimate interest in keeping the service secure (GDPR Art. 6(1)(f); KVKK Art. 5(2)(f))</td></tr>
+  <tr><td>Managing your subscription with RevenueCat</td><td>Performance of the contract with you (GDPR Art. 6(1)(b); KVKK Art. 5(2)(c))</td></tr>
   <tr><td>Reading Apple Health / Health Connect data</td><td>Your explicit consent through the system permission dialog</td></tr>
   <tr><td>Answering your support emails</td><td>Our legitimate interest in responding to you (GDPR Art. 6(1)(f))</td></tr>
 </table>
 
 <h2>6. How long data is kept</h2>
 <ul>
-  <li><strong>On your device:</strong> until you delete it in the app, use <em>Delete all data</em>, or uninstall the app.</li>
-  <li><strong>Google (Gemini):</strong> for the limited period described in Google's terms (section 3.1).</li>
+  <li><strong>On your device:</strong> until you delete it in the app, use <em>Erase all data</em>, or uninstall the app.</li>
+  <li><strong>Account and cloud backup:</strong> until you delete your account in <em>Profile → Account → Delete account</em>, or until you ask us by email to delete it. Signing out does not delete the backup.</li>
+  <li><strong>Google (Gemini):</strong> for the limited period described in Google's terms (section 3.2).</li>
+  <li><strong>RevenueCat:</strong> subscription and transaction records for as long as needed to provide your subscription and meet legal obligations, under RevenueCat's policy.</li>
   <li><strong>Support emails:</strong> for as long as needed to resolve your request, and no longer than 2 years.</li>
 </ul>
 
 <h2>7. Your rights</h2>
 <p>Depending on where you live, you have the right to access, correct, delete or export your personal data, to restrict or object to processing, to withdraw consent, and to lodge a complaint with a supervisory authority — for example the Turkish Personal Data Protection Authority (KVKK Kurumu) or your local EU/UK data protection authority. Residents of California and other US states have similar rights under state law; we do not sell or share personal information as those laws define it.</p>
-<p>Because your data lives on your device, you can exercise most of these rights directly in the app: view and edit it in Profile, and erase it with <em>Profile → Delete all data</em>. For anything else, email <a href="mailto:ergun.app.dev@gmail.com">ergun.app.dev@gmail.com</a>. We will reply within 30 days. As we hold no account data on servers, we generally cannot identify you or retrieve data from your device on your behalf.</p>
+<p>You can exercise most of these rights directly in the app: view and edit your data in Profile, erase the data on your phone with <em>Profile → Erase all data</em>, and delete your account and cloud backup with <em>Profile → Account → Delete account</em>. If you have an account, you can also email <a href="mailto:ergun.app.dev@gmail.com">ergun.app.dev@gmail.com</a> from the address linked to it to ask for a copy (export) of your backup or for its deletion. For anything else, email us as well. We will reply within 30 days. If you do not use an account, we hold no data that identifies you and cannot retrieve data from your device on your behalf.</p>
 
 <h2>8. Children</h2>
-<p>NutriBuddy is intended for adults aged 18 and over and is not directed at children. We do not knowingly process data of anyone under 18. If you believe a child has used the app, deleting the app removes all of its data.</p>
+<p>NutriBuddy is intended for adults aged 18 and over and is not directed at children. We do not knowingly process data of anyone under 18. If you believe a child has used the app, deleting the app removes the data on the device; if the child signed in, contact us and we will delete the account and its backup.</p>
 
 <h2>9. Security</h2>
-<p>Data is stored in the app's sandboxed storage protected by your phone's operating system and device lock. Data sent to Google and Open Food Facts is encrypted in transit using HTTPS (TLS). Keep your device protected with a passcode; anyone who can unlock your phone can open the app.</p>
+<p>Data is stored in the app's sandboxed storage protected by your phone's operating system and device lock. Cloud backups are protected by Firebase security rules that let each user read and write only their own data. Data sent to Google, RevenueCat and Open Food Facts is encrypted in transit using HTTPS (TLS). Keep your device protected with a passcode; anyone who can unlock your phone can open the app.</p>
 
 <h2>10. International transfers</h2>
-<p>Data you send through AI features is processed by Google, which may store and process it in the United States and other countries. Where required, this transfer relies on your explicit consent and on the safeguards Google provides in its terms.</p>
+<p>Your cloud backup is stored in Google Cloud Firestore in Europe. Google (Firebase Authentication, Firebase AI Logic and Gemini) and RevenueCat may process data in the United States and other countries. Where required, these transfers rely on the European Commission's Standard Contractual Clauses and other safeguards these providers offer in their terms, and, for AI features, on your explicit consent.</p>
 
 <h2>11. Changes to this policy</h2>
 <p>We may update this policy when the app changes. The effective date at the top shows the latest version. If a change materially affects how your data is used, we will tell you in the app before it applies.</p>

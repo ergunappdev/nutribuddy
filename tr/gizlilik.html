@@ -15,15 +15,17 @@
 </div></header>
 <main><div class="wrap">
 <h1>Gizlilik Politikası ve Aydınlatma Metni</h1>
-<p class="meta">Yürürlük tarihi: 23 Ekim 2026 · iOS ve Android'deki NutriBuddy uygulaması için geçerlidir</p>
+<p class="meta">Yürürlük tarihi: 24 Ekim 2026 · iOS ve Android'deki NutriBuddy uygulaması için geçerlidir</p>
 
 <div class="card summary">
   <p><strong>Kısaca</strong></p>
   <ul>
-    <li>NutriBuddy'de <strong>kullanıcı hesabı ve bize ait bir sunucu yoktur</strong>. Profilin, öğünlerin, tartımların, su ve adım kayıtların ile sohbetlerin <strong>yalnızca telefonunda</strong> saklanır.</li>
-    <li>Bir yapay zekâ özelliğini kullandığında (fotoğrafla tarama, öğünü yazarak/sesle anlatma, barkod, Nutri koç) gönderdiğin içerik cevabı üretmek için <strong>Google'ın Gemini API'sine</strong> iletilir. Bu ilk kez olmadan önce iznini isteriz.</li>
+    <li>NutriBuddy <strong>hesap açmadan</strong> eksiksiz çalışır. Profilin, öğünlerin, tartımların, su ve adım kayıtların ile sohbetlerin <strong>telefonunda</strong> saklanır.</li>
+    <li>İstersen Apple veya Google ile <strong>giriş yapabilirsin</strong>; o zaman verini başka bir telefonda geri yükleyebilmen için yedeğin <strong>Google Firebase'de (Cloud Firestore, Avrupa)</strong> saklanır. Yedeğine yalnızca sen erişebilirsin.</li>
+    <li>Bir yapay zekâ özelliğini kullandığında (fotoğrafla tarama, öğünü yazarak/sesle anlatma, barkod, Nutri koç) gönderdiğin içerik cevabı üretmek için <strong>Firebase AI Logic üzerinden Google Gemini'ye</strong> iletilir. Bu ilk kez olmadan önce iznini isteriz.</li>
+    <li>Ödemeleri Apple veya Google işler; abonelik durumun <strong>RevenueCat</strong> ile yönetilir. Ödeme bilgilerini asla görmeyiz.</li>
     <li>Verini <strong>satmayız</strong>; reklam, analiz (analytics) veya takip araçları kullanmayız; seni başka uygulama ve sitelerde izlemeyiz.</li>
-    <li>Her şeyi istediğin an <em>Profil → Tüm verileri sil</em> ile ya da uygulamayı kaldırarak silebilirsin.</li>
+    <li>Telefonundaki veriyi <em>Profil → Tüm verileri sil</em> ile, hesabını ve bulut yedeğini <em>Profil → Hesap → Hesabı sil</em> ile silebilirsin.</li>
   </ul>
 </div>
 
@@ -32,44 +34,56 @@
 <p>Gizlilikle ilgili her soru ve talep için: <a href="mailto:ergun.app.dev@gmail.com">ergun.app.dev@gmail.com</a></p>
 
 <h2>2. Cihazında saklanan veriler</h2>
-<p>Aşağıdaki bilgileri sen oluşturursun ve telefonundaki uygulamaya özel alanda saklanır. <strong>Bize ait hiçbir sunucuya yüklenmez</strong> — böyle bir sunucumuz yok.</p>
+<p>Aşağıdaki bilgileri sen oluşturursun ve telefonundaki uygulamaya özel alanda saklanır. Kendimize ait bir sunucu işletmiyoruz. Giriş yapmazsan bu veriler, 3. bölümde anlatılan özellikleri kullandığında gönderilenler dışında telefonunda kalır. Giriş yaparsan çoğunun bir kopyası 3.1'de anlatıldığı şekilde yedeklenir.</p>
 <table class="table">
   <tr><th>Tür</th><th>Örnekler</th></tr>
   <tr><td>Profil ve hedefler</td><td>Cinsiyet, yaş, boy, güncel ve hedef kilo, hareket düzeyi, hedef ve tempo, beslenme tarzı, yemek kısıtlamaları ve tercihleri, motivasyonların ve başlangıçta verdiğin diğer cevaplar; kalori, makro, su ve adım hedefleri</td></tr>
-  <tr><td>Kayıtlar</td><td>Öğünler ve tahmini kalori/makro değerleri, su, tartımlar, favori yemekler</td></tr>
+  <tr><td>Kayıtlar</td><td>Öğünler ve tahmini kalori/makro değerleri, su, adım ve aktif enerji, tartımlar, favori yemekler, beslenme planın</td></tr>
   <tr><td>Koç</td><td>Nutri ile sohbetin ve sohbete eklediğin fotoğraflar</td></tr>
   <tr><td>Ayarlar</td><td>Dil, görünüm, hatırlatma saatleri, bildirim ve sağlık senkronu tercihleri</td></tr>
 </table>
 <p>Cihaz yedekleri: iCloud Yedekleme (iOS) veya Google cihaz yedeklemesi (Android) açıksa işletim sistemin uygulamanın yerel verisini kişisel cihaz yedeğine dahil edebilir. Bu yedekleri sen ve Apple/Google yönetir, biz değil.</p>
 
 <h2>3. Cihazından çıkan veriler</h2>
-<h3>3.1 Yapay zekâ özellikleri — Google Gemini API</h3>
-<p>NutriBuddy, yemekleri analiz etmek ve Nutri koçu çalıştırmak için Google LLC'nin sunduğu Gemini API'yi kullanır. Veri <strong>yalnızca bu özelliklerden birini kendin kullandığında</strong> ve uygulamada izin verdikten sonra gönderilir:</p>
+<h3>3.1 İsteğe bağlı hesap ve bulut yedeği — Google Firebase</h3>
+<p>Verini yedeklemek ve başka bir telefonda geri yüklemek için Apple (iOS) veya Google (Android) ile giriş yapabilirsin. Giriş yapmak <strong>isteğe bağlıdır</strong>; tüm özellikler giriş yapmadan da çalışır. Giriş, Google Firebase Authentication (Google LLC) ile sağlanır. Apple veya Google'dan bir kullanıcı kimliği, e-posta adresin (Apple kullanıcıları "E-postamı Gizle" ile gizleyebilir) ve paylaşmayı seçersen adın bize iletilir.</p>
+<p>Giriş yapmışken uygulama arka plana geçtiğinde yedek yüklenir. Yedek, veritabanı Avrupa'da (çoklu bölge "eur3") bulunan Google Cloud Firestore'da (Firebase) saklanır.</p>
+<table class="table">
+  <tr><th>Yedeklenenler</th><th>Yedeklenmeyenler</th></tr>
+  <tr><td>Profil, hedefler ve başlangıç cevapları; ayarlar (ör. dil, görünüm ve plan kartı); kalori ve makrolarıyla öğün kayıtları; su, adım, aktif enerji ve tartım kayıtları; favori yemekler; beslenme planın</td><td>Nutri koç sohbetin ve fotoğrafları; yapay zekâ izni tercihin; bildirim ve sağlık izinleri; abonelik durumun</td></tr>
+</table>
+<p>Güvenlik kuralları her kullanıcının yalnızca kendi verisini okuyup yazmasına izin verir; veriler aktarım sırasında şifrelenir (TLS). Çıkış yapmak yedeğini silmez, daha sonra geri yükleyebilirsin. <em>Profil → Hesap → Hesabı sil</em> hesabını ve bulut yedeğini kalıcı olarak siler; telefonundaki veri ise sen <em>Profil → Tüm verileri sil</em> ile silene kadar kalır. Bkz. <a href="https://firebase.google.com/support/privacy" rel="noopener">Firebase gizlilik ve güvenlik bilgileri</a> ve <a href="https://policies.google.com/privacy?hl=tr" rel="noopener">Google Gizlilik Politikası</a>.</p>
+
+<h3>3.2 Yapay zekâ özellikleri — Firebase AI Logic üzerinden Google Gemini</h3>
+<p>NutriBuddy, yemekleri analiz etmek ve Nutri koçu çalıştırmak için Google LLC'nin sunduğu Google Gemini'yi kullanır. İstekler Google Firebase AI Logic üzerinden Gemini Developer API'ye gönderilir; Gemini API anahtarı uygulamanın içinde bulunmaz. Veri <strong>yalnızca bu özelliklerden birini kendin kullandığında</strong> ve uygulamada izin verdikten sonra gönderilir:</p>
 <table class="table">
   <tr><th>Özellik</th><th>Gönderilen</th></tr>
   <tr><td>Fotoğrafla tarama</td><td>Çektiğin ya da seçtiğin yemek fotoğrafı ve uygulama dili</td></tr>
   <tr><td>Öğünü anlatma (yazı/ses)</td><td>Yazdığın metin ya da söylediklerinin yazıya dökülmüş hâli</td></tr>
-  <tr><td>Barkod</td><td>Yalnızca barkod numarası, Open Food Facts'e (bkz. 3.2) — Gemini'ye değil</td></tr>
+  <tr><td>Barkod</td><td>Yalnızca barkod numarası, Open Food Facts'e (bkz. 3.4) — Gemini'ye değil</td></tr>
   <tr><td>Nutri koç</td><td>Mesajın ve eklediğin fotoğraf; profilinin ve hedeflerinin kısa özeti (ör. yaş, cinsiyet, boy, kilo, hedef kilo, beslenme tarzı, kısıtlamalar ve 2. bölümde sayılan başlangıç cevapları); günün kaydının özeti (yenen kalori ve makrolar, öğün adları ve saatleri, su ve adım sayısı); koçun konuşmayı takip edebilmesi için son mesajların</td></tr>
 </table>
-<p>Adını, e-posta adresini, iletişim bilgilerini, konumunu veya cihaz kimliklerini Google'a göndermeyiz — uygulama bunları zaten toplamaz.</p>
-<p>Google bu veriyi cevabı üretmek için işler. Ücretli kullanıma uygulanan Gemini API şartlarına göre Google istem ve cevapları ürünlerini geliştirmek için kullanmaz; kötüye kullanımı tespit etmek ve yasal yükümlülükler için sınırlı bir süre saklayabilir. Bkz. <a href="https://ai.google.dev/gemini-api/terms" rel="noopener">Gemini API Ek Hizmet Şartları</a> ve <a href="https://policies.google.com/privacy?hl=tr" rel="noopener">Google Gizlilik Politikası</a>. Google veriyi ABD'de ve başka ülkelerde işleyebilir.</p>
+<p>Yapay zekâ isteklerinde adın, e-posta adresin, iletişim bilgilerin veya konumun yer almaz.</p>
+<p>Google bu veriyi cevabı üretmek için işler. Gemini API'yi ücretli planla kullanıyoruz; ücretli kullanıma uygulanan şartlara göre Google istem ve cevapları ürünlerini geliştirmek için kullanmaz; kötüye kullanımı tespit etmek ve yasal yükümlülükler için sınırlı bir süre saklayabilir. Bkz. <a href="https://ai.google.dev/gemini-api/terms" rel="noopener">Gemini API Ek Hizmet Şartları</a> ve <a href="https://policies.google.com/privacy?hl=tr" rel="noopener">Google Gizlilik Politikası</a>. Google veriyi ABD'de ve başka ülkelerde işleyebilir.</p>
 <p>Yapay zekâ sonuçları tahmindir. Lütfen <a href="saglik-uyarisi.html">Sağlık Uyarısı</a>'nı oku.</p>
 
-<h3>3.2 Barkod — Open Food Facts</h3>
+<h3>3.3 Uygulama koruması — Firebase App Check</h3>
+<p>Yapay zekâ hizmetini kötüye kullanıma karşı korumak için uygulama Firebase App Check (Google LLC) kullanır. App Check, isteklerin gerçek NutriBuddy uygulamasından geldiğini doğrulamak için Apple App Attest/DeviceCheck (iOS) veya Google Play Integrity (Android) hizmetlerinden yararlanır. Bu hizmetler hakkında kişisel veri değil, bir cihaz bütünlüğü belirteci (token) alıp verir.</p>
+
+<h3>3.4 Barkod — Open Food Facts</h3>
 <p>Paketli bir ürünün barkodunu okuttuğunda, besin değerlerini almak için yalnızca barkod numarası herkese açık <a href="https://world.openfoodfacts.org" rel="noopener">Open Food Facts</a> veritabanına gönderilir. Başka hiçbir veri gönderilmez.</p>
 
-<h3>3.3 Sesle anlatma — telefonunun ses tanıma hizmeti</h3>
+<h3>3.5 Sesle anlatma — telefonunun ses tanıma hizmeti</h3>
 <p>Mikrofonu kullanırsan konuşman telefonunun yerleşik ses tanıma hizmetiyle (iOS'ta Apple, Android'de Google) yazıya çevrilir. Cihazına ve ayarlarına göre ses Apple ya da Google tarafından kendi gizlilik politikaları kapsamında işlenebilir. NutriBuddy sesi kaydetmez ve saklamaz; yalnızca metni alır.</p>
 
-<h3>3.4 Apple Sağlık ve Health Connect</h3>
+<h3>3.6 Apple Sağlık ve Health Connect</h3>
 <p>Bağlamayı seçersen NutriBuddy günlük hedeflerini doğru tutmak için Apple Sağlık (iOS) veya Health Connect'ten (Android) adım sayını, aktif enerjini ve kilonu <strong>okur</strong>. Bu hizmetlere veri yazmaz. Erişimi Sağlık uygulamasından ya da Health Connect ayarlarından istediğin an kaldırabilirsin.</p>
-<p>Apple Sağlık veya Health Connect'ten gelen veriler asla reklam veya pazarlama için kullanılmaz, satılmaz ve üçüncü taraflar için profil oluşturmada kullanılmaz. Nutri koçu kullandığında günün adım sayısı koça giden özete (3.1) dahil olabilir.</p>
+<p>Apple Sağlık veya Health Connect'ten gelen veriler asla reklam veya pazarlama için kullanılmaz, satılmaz ve üçüncü taraflar için profil oluşturmada kullanılmaz. Nutri koçu kullandığında günün adım sayısı koça giden özete (3.2) dahil olabilir. Giriş yapmışsan uygulamada kayıtlı adım, aktif enerji ve kilo değerlerin bulut yedeğine (3.1) dahil edilir.</p>
 
-<h3>3.5 Satın almalar — App Store ve Google Play</h3>
-<p>Abonelikler tamamen Apple veya Google tarafından işlenir. Ödeme bilgilerini görmeyiz ve saklamayız; uygulama yalnızca aktif bir aboneliğin olup olmadığını öğrenir.</p>
+<h3>3.7 Satın almalar — App Store, Google Play ve RevenueCat</h3>
+<p>Abonelikler tamamen Apple veya Google tarafından işlenir. Ödeme bilgilerini görmeyiz ve saklamayız. Abonelik durumunu RevenueCat, Inc. (ABD) ile yönetiriz; RevenueCat'e mağaza makbuzu ve işlem bilgileri, satın aldığın ürün ve bir uygulama kullanıcı kimliği iletilir. Bu kimlik rastgele oluşturulmuş bir kimliktir; giriş yapmışsan aboneliğin yeni telefonuna da taşınabilsin diye hesap kimliğin kullanılır. Bkz. <a href="https://www.revenuecat.com/privacy" rel="noopener">RevenueCat gizlilik politikası</a>.</p>
 
-<h3>3.6 Bildirimler</h3>
+<h3>3.8 Bildirimler</h3>
 <p>Öğün, su ve deneme hatırlatmaları telefonunda yerel olarak planlanır; bildirim sunucusu kullanılmaz.</p>
 
 <h2>4. Yapmadıklarımız</h2>
@@ -85,7 +99,10 @@
 <table class="table">
   <tr><th>Amaç</th><th>Hukuki sebep (KVKK / GDPR)</th></tr>
   <tr><td>Uygulamanın temel özelliklerini cihazında sunmak</td><td>Sözleşmenin ifası (KVKK m.5/2-c; GDPR m.6/1-b)</td></tr>
+  <tr><td>İsteğe bağlı hesap ve bulut yedeği — kilo, beslenme ve yenen yemekler gibi sağlıkla ilgili bilgiler dahil</td><td>Giriş yapmayı seçtiğinde sözleşmenin ifası, sağlıkla ilgili bilgiler için açık rızan (KVKK m.5/2-c, m.6 ve m.9; GDPR m.6/1-a, m.6/1-b ve m.9/2-a). Hesabını silerek istediğin an geri çekebilirsin.</td></tr>
   <tr><td>Yapay zekâ özellikleri için içeriğin Gemini'ye gönderilmesi — kilo, beslenme ve yenen yemekler gibi sağlıkla ilgili bilgiler dahil — ve buna bağlı yurt dışına aktarım</td><td>İlk kullanımdan önce uygulamada verdiğin açık rıza (KVKK m.6 ve m.9; GDPR m.6/1-a ve m.9/2-a). Rızanı yapay zekâ özelliklerini kullanmayarak ve verini silerek istediğin an geri çekebilirsin; geri çekme önceki işlemeleri etkilemez.</td></tr>
+  <tr><td>Yapay zekâ hizmetini Firebase App Check ile kötüye kullanıma karşı korumak</td><td>Hizmetin güvenliğini sağlamadaki meşru menfaatimiz (KVKK m.5/2-f; GDPR m.6/1-f)</td></tr>
+  <tr><td>Aboneliğinin RevenueCat ile yönetilmesi</td><td>Sözleşmenin ifası (KVKK m.5/2-c; GDPR m.6/1-b)</td></tr>
   <tr><td>Apple Sağlık / Health Connect verisinin okunması</td><td>Sistem izin penceresinde verdiğin açık rıza</td></tr>
   <tr><td>Destek e-postalarına cevap vermek</td><td>Meşru menfaat (KVKK m.5/2-f; GDPR m.6/1-f)</td></tr>
 </table>
@@ -93,22 +110,24 @@
 <h2>6. Saklama süreleri</h2>
 <ul>
   <li><strong>Cihazında:</strong> uygulamada silene, <em>Tüm verileri sil</em>'i kullanana ya da uygulamayı kaldırana kadar.</li>
-  <li><strong>Google (Gemini):</strong> Google şartlarında belirtilen sınırlı süre (3.1).</li>
+  <li><strong>Hesap ve bulut yedeği:</strong> hesabını <em>Profil → Hesap → Hesabı sil</em> ile silene ya da silmemizi e-postayla isteyene kadar. Çıkış yapmak yedeği silmez.</li>
+  <li><strong>Google (Gemini):</strong> Google şartlarında belirtilen sınırlı süre (3.2).</li>
+  <li><strong>RevenueCat:</strong> abonelik ve işlem kayıtları, aboneliğini sunmak ve yasal yükümlülükleri yerine getirmek için gereken süre boyunca, RevenueCat'in politikasına göre.</li>
   <li><strong>Destek e-postaları:</strong> talebini çözmek için gereken süre, en fazla 2 yıl.</li>
 </ul>
 
 <h2>7. Hakların (KVKK m.11 ve GDPR)</h2>
 <p>Kişisel verinin işlenip işlenmediğini öğrenme, bilgi talep etme, işleme amacını öğrenme, aktarıldığı üçüncü kişileri bilme, eksik veya yanlış işlenmişse düzeltilmesini, silinmesini veya yok edilmesini isteme, bunların aktarıldığı üçüncü kişilere bildirilmesini isteme, münhasıran otomatik sistemlerle analiz sonucu aleyhine bir sonuç çıkmasına itiraz etme ve kanuna aykırı işleme nedeniyle zarara uğrarsan zararın giderilmesini talep etme haklarına sahipsin. AB/Birleşik Krallık'ta yaşıyorsan verine erişim, taşınabilirlik, işlemeyi kısıtlama ve itiraz hakların da vardır. Kişisel Verileri Koruma Kurulu'na ya da bulunduğun ülkenin veri koruma otoritesine şikâyette bulunabilirsin.</p>
-<p>Verin cihazında durduğu için bu hakların çoğunu doğrudan uygulamada kullanabilirsin: Profil'de görüntüleyip düzenleyebilir, <em>Profil → Tüm verileri sil</em> ile silebilirsin. Diğer talepler için <a href="mailto:ergun.app.dev@gmail.com">ergun.app.dev@gmail.com</a> adresine yaz; en geç 30 gün içinde cevap veririz. Sunucularımızda hesap verisi tutmadığımız için genellikle seni tanımlayamaz ve cihazındaki veriye senin adına erişemeyiz.</p>
+<p>Bu hakların çoğunu doğrudan uygulamada kullanabilirsin: verini Profil'de görüntüleyip düzenleyebilir, telefonundaki veriyi <em>Profil → Tüm verileri sil</em> ile, hesabını ve bulut yedeğini <em>Profil → Hesap → Hesabı sil</em> ile silebilirsin. Hesabın varsa yedeğinin bir kopyasını (dışa aktarım) ya da silinmesini istemek için hesabına bağlı adresten <a href="mailto:ergun.app.dev@gmail.com">ergun.app.dev@gmail.com</a> adresine yazabilirsin. Diğer talepler için de bize yaz; en geç 30 gün içinde cevap veririz. Hesap kullanmıyorsan seni tanımlayan hiçbir veri tutmayız ve cihazındaki veriye senin adına erişemeyiz.</p>
 
 <h2>8. Çocuklar</h2>
-<p>NutriBuddy 18 yaş ve üzeri yetişkinler içindir ve çocuklara yönelik değildir. 18 yaşından küçüklerin verisini bilerek işlemeyiz. Bir çocuğun uygulamayı kullandığını düşünüyorsan uygulamayı silmek tüm verisini kaldırır.</p>
+<p>NutriBuddy 18 yaş ve üzeri yetişkinler içindir ve çocuklara yönelik değildir. 18 yaşından küçüklerin verisini bilerek işlemeyiz. Bir çocuğun uygulamayı kullandığını düşünüyorsan uygulamayı silmek cihazdaki verisini kaldırır; çocuk giriş yaptıysa bize yaz, hesabı ve yedeğini sileriz.</p>
 
 <h2>9. Güvenlik</h2>
-<p>Veriler, işletim sisteminin ve cihaz kilidinin koruduğu, uygulamaya özel alanda saklanır. Google'a ve Open Food Facts'e giden veriler HTTPS (TLS) ile şifrelenerek iletilir. Telefonunu şifreyle koru; telefonunun kilidini açabilen biri uygulamayı da açabilir.</p>
+<p>Veriler, işletim sisteminin ve cihaz kilidinin koruduğu, uygulamaya özel alanda saklanır. Bulut yedekleri, her kullanıcının yalnızca kendi verisini okuyup yazmasına izin veren Firebase güvenlik kurallarıyla korunur. Google'a, RevenueCat'e ve Open Food Facts'e giden veriler HTTPS (TLS) ile şifrelenerek iletilir. Telefonunu şifreyle koru; telefonunun kilidini açabilen biri uygulamayı da açabilir.</p>
 
 <h2>10. Yurt dışına aktarım</h2>
-<p>Yapay zekâ özellikleriyle gönderdiğin veriler, ABD ve başka ülkelerde saklayıp işleyebilen Google tarafından işlenir. Gerektiği yerde bu aktarım açık rızana ve Google'ın şartlarında sunduğu güvencelere dayanır.</p>
+<p>Bulut yedeğin Avrupa'daki Google Cloud Firestore'da saklanır. Google (Firebase Authentication, Firebase AI Logic ve Gemini) ve RevenueCat veriyi ABD'de ve başka ülkelerde işleyebilir. Gerektiği yerde bu aktarımlar Avrupa Komisyonu'nun Standart Sözleşme Maddelerine ve bu sağlayıcıların şartlarında sunduğu diğer güvencelere, yapay zekâ özellikleri için ayrıca açık rızana dayanır.</p>
 
 <h2>11. Değişiklikler</h2>
 <p>Uygulama değiştikçe bu metni güncelleyebiliriz. En üstteki yürürlük tarihi son sürümü gösterir. Bir değişiklik verinin kullanımını önemli ölçüde etkiliyorsa uygulanmadan önce uygulama içinde haber veririz.</p>
